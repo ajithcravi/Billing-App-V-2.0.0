@@ -1,20 +1,12 @@
 const express = require("express");
 const app = express();
+const router = require("./Routes/index");
 const port = process.env.PORT || 3000;
 
-app.all("/:id", (req, res, next) => {
-  console.log(req.params.id);
-  if (req.params.id == "3") {
-    console.log("hi");
-    next();
-  } else {
-    next();
-  }
-});
+app.use("/", router);
 
-app.get("/secret", (req, res, next) => {
-  res.send("You cannot find me");
-});
+app.use("/secrets", require("./Routes/secrets"));
+app.use("/public", require("./Routes/public"));
 
 app.listen(port, () => {
   console.log(`You are a genius Ajith!!! You made me work in port ${port}`);
