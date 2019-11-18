@@ -9,7 +9,7 @@ const formSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  message: {
+  messages: {
     type: String,
     required: true
   }

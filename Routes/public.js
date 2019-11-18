@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 router.use("/", (req, res, next) => {
-  res.send("Welcome to public section section");
+  res.send("Welcome to public section");
   next();
 });
 
