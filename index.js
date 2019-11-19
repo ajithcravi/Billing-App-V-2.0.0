@@ -23,6 +23,7 @@ db.then(() => console.log("db connected succesfully"));
 db.catch(error => console.log(error));
 
 app.use("/", require("./Routes/index"));
+app.use("/bill", require("./Routes/billing"));
 
 // app.use("/secrets", require("./Routes/secrets"));
 // app.use("/public", require("./Routes/public"));
