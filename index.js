@@ -13,7 +13,7 @@ app.use(
   })
 );
 
-mongoose.connect("mongodb://localhost:27017/test", {
+mongoose.connect("mongodb://localhost:27017/shop", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
