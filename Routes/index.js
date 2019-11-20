@@ -2,7 +2,7 @@ const router = require("express").Router();
 const CustomerModel = require("../Models/customer.model");
 
 router.get("/", (req, res) => {
-  res.redirect("customerDetailsForm.html");
+  res.render("index", { title: "Home" });
 });
 
 router.post("/", (req, res) => {

@@ -1,18 +1,22 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const path = require("path");
 const url = require("./config/keys").url;
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
-app.use(express.static("views"));
 app.use(
   bodyParser.urlencoded({
     extended: true
   })
 );
+app.use(express.static("public"));
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "./views"));
+app.locals.pretty = true;
 
 mongoose.connect(url, {
   useNewUrlParser: true,
