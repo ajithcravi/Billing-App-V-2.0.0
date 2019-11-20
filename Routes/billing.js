@@ -2,7 +2,7 @@ const router = require("express").Router();
 const ProductModel = require("../Models/product.model");
 
 router.get("/", (req, res) => {
-  res.redirect("bill.html");
+  res.render("index");
 });
 
 router.post("/", (req, res) => {

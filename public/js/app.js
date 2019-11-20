@@ -8,11 +8,11 @@ $("#navbarCloseButton").click(() => {
   document.getElementById("mySidenav").style.width = "0";
 });
 
-$(".addCustomerForm").submit(function(event) {
-  event.preventDefault();
-  clearInput(); //Clear input fields of the add customer form
-  closeModal(); //Close modal
-});
+// $(".addCustomerForm").submit(function(event) {
+//   event.preventDefault();
+//   clearInput(); //Clear input fields of the add customer form
+//   closeModal(); //Close modal
+// });
 
 // Add item modal code
 // $(".itemModal").on("show.bs.modal", function(event) {

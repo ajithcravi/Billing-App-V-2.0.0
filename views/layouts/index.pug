@@ -1,12 +1,64 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  meta(http-equiv='X-UA-Compatible', content='ie=edge')
-  title #{title}
-  link(rel='stylesheet', href='/css/style.css')
-  // Bootstrap css
-  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
-body
-  include includes/header
-  include includes/scripts
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title Invoice
+    link(rel='stylesheet', href='./css/style.css')
+    // Bootstrap css
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+  body
+    #mySidenav.sidenav
+      a#navbarCloseButton.closebtn(href='javascript:void(0)', onclick='closeNav()') ×
+      // Shop Details
+      .menuContent
+        a(href='')
+          h3 SHOP
+        br
+        div
+          | AA Stores 
+          br
+          |           GSTIN: 27AACCF0683K1ZH
+        |         123, 5th Main Road, Ejipura, 
+        br
+        |         Bangalore, Karnataka - 560 047 
+        br
+        |         9654171823
+      br
+      // Customer Details
+      .menuContent
+        a#addOrEditCustomer(data-toggle='modal', data-target='#exampleModal', data-whatever='@fat', href='')
+          h3 CUSTOMER
+        br
+        div
+          | #{customerName} 
+          br          
+        |         #{contactNo}
+      br
+    nav.navbar.navbar-light.bg-dark
+      a.navbar-brand(href='#')
+        img.d-inline-block.align-top(src='/images/iPredictLogo.png', width='30', height='30', alt='Ipredict Logo')
+        |         IPREDICT
+      span#navbarMenuButton.navbarMenuButton ☰
+    // Customer Modal
+    #exampleModal.modal.fade.customerModal(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+      .modal-dialog.modal-dialog-centered(role='document')
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Customer Details
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body
+            form.addCustomerForm(action='/', method='POST')
+              .form-group
+                label.col-form-label(for='customer-name') Name:
+                input#recipient-name.form-control.customerName.clearInput(name='customerName', type='text')
+              .form-group
+                label.col-form-label(for='customer-contactNo') Contact No:
+                input#recipient-contact.form-control.customerContactNo.clearInput(name='contactNo', type='number')
+              .modal-footer
+                button.btn.btn-outline-info.btn-lg.customCloseButton.closeModal(type='button', data-dismiss='modal')
+                  | Close
+                input#customerFormSubmitButton.btn.btn-outline-info.btn-lg.whiteBgButton(type='submit', value='Ok')
+include includes/scripts

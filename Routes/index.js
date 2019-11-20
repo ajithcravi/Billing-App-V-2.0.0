@@ -2,7 +2,7 @@ const router = require("express").Router();
 const CustomerModel = require("../Models/customer.model");
 
 router.get("/", (req, res) => {
-  res.render("index", { title: "Home" });
+  res.render("index");
 });
 
 router.post("/", (req, res) => {
@@ -10,12 +10,18 @@ router.post("/", (req, res) => {
     customerName: req.body.customerName,
     contactNo: req.body.contactNo
   });
+  console.log(data);
   CustomerModel.findOne({ contactNo: data.contactNo })
     .then(doc => {
       if (!doc) {
         data
           .save()
-          .then(doc => console.log(`Customer succesfully added ${doc}`))
+          .then(doc => {
+            res.render("index", {
+              customerName: doc.customerName,
+              contactNo: doc.contactNo
+            });
+          })
           .catch(err => console.log(err));
       } else {
         if (data.customerName !== doc.customerName) {
@@ -23,12 +29,14 @@ router.post("/", (req, res) => {
             `This customer has already registerd with another name ${doc.customerName}`
           );
         } else {
-          console.log(`Hurray!! Its is our old customer ${doc.customerName}`);
+          res.render("index", {
+            customerName: doc.customerName,
+            contactNo: doc.contactNo
+          });
         }
       }
     })
     .catch(err => console.log(err));
-  res.redirect("customerDetailsForm.html");
 });
 
 module.exports = router;
