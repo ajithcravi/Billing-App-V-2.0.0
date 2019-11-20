@@ -1,0 +1,68 @@
+/* Root variables */
+:root {
+  --billFontSize: 1.5em;
+  --paddingAndMargin: 2em;
+  --green: #3c8c30;
+  --darkGrey: #303030;
+  --goldenOrange: #d96704;
+  --fontFamily: sans-serif;
+}
+
+/* fixing 100% width and height to the document */
+html,
+body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+
+/* Top band */
+/* logo */
+.logo {
+  height: var(--billFontSize);
+  margin-right: var(--paddingAndMargin);
+}
+/* Band overall style */
+.topContainer {
+  align-items: center;
+  background-color: var(--darkGrey);
+  color: white;
+  display: flex;
+  flex-flow: row;
+  font-family: var(--fontFamily);
+  font-size: 1.5em;
+  justify-content: space-between;
+  letter-spacing: 0.5em;
+  padding: 0.5em;
+  position: -webkit-stickys;
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: +1;
+}
+
+/* media query for max-width 675px */
+@media (max-width: 675px) {
+  .logo {
+    height: var(--billFontSize);
+    margin-right: 1em;
+  }
+
+  .topContainer {
+    font-size: var(--billFontSize);
+    letter-spacing: 0.125em;
+    padding: 0.25em;
+  }
+}
+
+/* media query for print */
+@media print {
+  .topContainer {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+}
