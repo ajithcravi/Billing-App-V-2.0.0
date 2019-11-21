@@ -31,11 +31,7 @@ html(lang='en')
         a#addOrEditCustomer(data-toggle='modal', data-target='#exampleModal', data-whatever='@fat', href='')
           h3 CUSTOMER
         br
-        div
-          | #{customerName} 
-          br          
-        |         #{contactNo}
-      br
+        #customerDetailsDisplayDiv
     nav.navbar.navbar-light.bg-dark
       a.navbar-brand(href='#')
         img.d-inline-block.align-top(src='/images/iPredictLogo.png', width='30', height='30', alt='Ipredict Logo')
