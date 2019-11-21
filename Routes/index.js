@@ -17,7 +17,7 @@ router.post("/", (req, res) => {
         data
           .save()
           .then(doc => {
-            res.redirect(`/:${doc.customerName}/:${doc.contactNo}`);
+            res.redirect(`/users/${doc.customerName}/${doc.contactNo}`);
           })
           .catch(err => console.log(err));
       } else {
@@ -26,15 +26,15 @@ router.post("/", (req, res) => {
             `This customer has already registerd with another name ${doc.customerName}`
           );
         } else {
-          res.redirect(`/:${doc.customerName}/:${doc.contactNo}`);
+          res.redirect(`users/${doc.customerName}/${doc.contactNo}`);
         }
       }
     })
     .catch(err => console.log(err));
 });
 
-router.get("/:customerName/:contactNo", (req, res) => {
-  res.send("You found me");
+router.get("/users/:customerName/:contactNo", (req, res) => {
+  res.sendStatus(200);
 });
 
 module.exports = router;

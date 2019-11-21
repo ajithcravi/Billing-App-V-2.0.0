@@ -11,7 +11,7 @@ $("#navbarCloseButton").click(() => {
 $("customerFormSubmitButton").click(() => {
   $.ajax({
     type: "GET",
-    url: "http://localhost:3000/",
+    url: "http://localhost:3000/users/:customerName/:contactNo",
     success: data => {
       console.log(`Look what I have got \n ${data}`);
       $("#customerDetailsDisplayDiv").append(
