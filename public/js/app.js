@@ -8,21 +8,29 @@ $("#navbarCloseButton").click(() => {
   document.getElementById("mySidenav").style.width = "0";
 });
 
-$("customerFormSubmitButton").click(() => {
-  $.ajax({
-    type: "GET",
-    url: "http://localhost:3000/users/:customerName/:contactNo",
-    success: data => {
-      console.log(`Look what I have got \n ${data}`);
-      $("#customerDetailsDisplayDiv").append(
-        `${data.customerName}<br />${data.contactNo}`
-      );
-    },
-    error: () => {
-      console.log("There is an error in ajax call");
-    }
-  });
-});
+$("#customerDetailsDisplayDiv").load(
+  "http://127.0.0.1:3000/users/:customerName/:contactNo",
+  function() {
+    alert("Load was performed.");
+  }
+);
+
+// $(".addCustomerForm").submit(() => {
+//   console.log("here");
+// $.ajax({
+//   type: "GET",
+//   url: "http://127.0.0.1:3000/users/:customerName/:contactNo",
+//   success: data => {
+//     console.log(data);
+//     $("#customerDetailsDisplayDiv").append(
+//       `${data.customerName}<br />${data.contactNo}`
+//     );
+//   },
+//   error: () => {
+//     console.log("There is an error in ajax call");
+//   }
+// });
+// });
 
 // @Function name         clearInputBoxes
 // @Description           This function is to clear the input boxes

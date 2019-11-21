@@ -34,7 +34,8 @@ router.post("/", (req, res) => {
 });
 
 router.get("/users/:customerName/:contactNo", (req, res) => {
-  res.sendStatus(200);
+  res.send(req.params);
+  return req.params;
 });
 
 module.exports = router;
